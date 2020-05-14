@@ -43,9 +43,11 @@ class EntityAttributesCard extends HTMLElement {
   }
 
   setConfig(config) {
+    config = JSON.parse(JSON.stringify(config));
     if (!config.filter.include || !Array.isArray(config.filter.include)) {
       throw new Error('Please define filters');
     }
+    this._config = config;
 
     if (!config.heading_name) config.heading_name = 'Attributes';
     if (!config.heading_state) config.heading_state = 'States';
